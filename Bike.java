@@ -3,7 +3,7 @@
 *
 * @author  Aidan Lalonde-Novales
 * @version 1.0
-* @since   2022-10-30
+* @since   2022-11-01
 */
 
 /**
@@ -64,6 +64,9 @@ public class Bike extends Vehicle {
     public void accelerate(int appliedPower) {
         this.cadence += appliedPower;
         super.setSpeed(this.cadence * 2);
+        if (super.getSpeed() > super.getMaxSpeed()) {
+            super.setSpeed(super.getMaxSpeed());
+        }
     }
 
     /**

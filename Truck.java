@@ -3,7 +3,7 @@
 *
 * @author  Aidan Lalonde-Novales
 * @version 1.0
-* @since   2022-10-30
+* @since   2022-11-01
 */
 
 /**
@@ -17,10 +17,15 @@ public class Truck extends Vehicle {
     private String licensePlate = "";
 
     /**
-     * Bike Constructor - allows main to implement values for variables.
+     * Declare Air Pressure field.
+     */
+    private int airPressure;
+
+    /**
+     * Truck Constructor - allows main to implement values for variables.
      *
      * @param maxSpeed - max speed achievable.
-     * @param color - color of the bike.
+     * @param color - color of the Truck.
      */
     public Truck(int maxSpeed, String color) {
         super(maxSpeed, color);
@@ -35,6 +40,7 @@ public class Truck extends Vehicle {
         System.out.println("    -> Max Speed: " + super.getMaxSpeed());
         System.out.println("    -> Color: " + super.getColor());
         System.out.println("    -> License Plate: " + this.licensePlate);
+        System.out.println("    -> Air Pressure: " + this.airPressure);
         System.out.println("");
     }
 
@@ -57,12 +63,34 @@ public class Truck extends Vehicle {
     }
 
     /**
-     * AirPressure() method - uses airProvided to reduce speed.
+     * SetAirPressure() method - changes the airPressure value.
      *
-     * @param airProvided - input that reduces speed.
+     * @param airPressureInput - input to replace airPressure.
      */
-    public void airPressure(int airProvided) {
-        super.setSpeed(super.getSpeed() - airProvided / 2);
+    public void setAirPressure(int airPressureInput) {
+        this.airPressure = airPressureInput;
+    }
+
+    /**
+     * GetAirPressure() method - returns the current airPressure value.
+     *
+     * @return airPressure
+     */
+    public int getAirPressure() {
+        return this.airPressure;
+    }
+
+    /**
+     * Braking() method - uses brakePower, brakeTime, and airProvided
+     * to reduce speed.
+     *
+     * @param brakePower - input that reduces speed based on power.
+     * @param brakeTime - input that reduces speed based on time.
+     */
+    public void braking(int brakePower, int brakeTime) {
+        super.setSpeed(
+            super.getSpeed() - brakePower * brakeTime
+            - this.airPressure * brakeTime);
         if (super.getSpeed() < 0) {
             super.setSpeed(0);
         }

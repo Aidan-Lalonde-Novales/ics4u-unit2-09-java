@@ -4,7 +4,7 @@
 *
 * @author  Aidan Lalonde-Novales
 * @version 1.0
-* @since   2022-10-30
+* @since   2022-11-01
 */
 
 /**
@@ -31,6 +31,7 @@ final class Main {
     */
     public static void main(final String[] args) {
         // Avoid "Magic Number" errors.
+        final int two = 2;
         final int five = 5;
         final int ten = 10;
         final int fifteen = 15;
@@ -53,11 +54,15 @@ final class Main {
         bmxBike.accelerate(fifteen);
         bmxBike.status();
 
+        System.out.println("Braking, 5 of power for 2 seconds:");
+        bmxBike.braking(five, two);
+        bmxBike.status();
+
         System.out.println("Ring Bell:");
         bmxBike.ringBell();
+        System.out.println("");
 
         // Create Truck.
-        System.out.println("");
         System.out.println("Created Truck.");
         final Truck truckObj = new Truck(twoHundred, "Grey");
         truckObj.setLicensePlate("HGC-3456F");
@@ -65,19 +70,19 @@ final class Main {
         System.out.println("Truck Status:");
         truckObj.status();
 
-        System.out.println("Accelerating, 10 of power for 10 seconds.");
+        System.out.println("Accelerating, 10 of power for 10 seconds:");
         truckObj.accelerate(ten, ten);
         System.out.println("\nNew speed (1): " + truckObj.getSpeed());
         System.out.println("");
 
-        System.out.println("Breaking, 10 of power for 5 seconds.");
-        truckObj.braking(ten, five);
-        System.out.println("\nNew speed (2): " + truckObj.getSpeed());
+        System.out.println("Set tire Air Pressure to 5:");
+        truckObj.setAirPressure(five);
+        System.out.println("\nNew Air Pressure: " + truckObj.getAirPressure());
         System.out.println("");
 
-        System.out.println("Applying air pressure of 10:");
-        truckObj.airPressure(ten);
-        System.out.println("\nNew speed (3): " + truckObj.getSpeed());
+        System.out.println("Breaking, 10 of power for 2 seconds:");
+        truckObj.braking(ten, two);
+        System.out.println("\nNew speed (2): " + truckObj.getSpeed());
 
         System.out.println("\nDone.");
     }
